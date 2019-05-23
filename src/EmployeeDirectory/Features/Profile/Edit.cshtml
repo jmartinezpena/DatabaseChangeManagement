@@ -1,0 +1,21 @@
+﻿@model EmployeeDirectory.Features.Profile.EditProfile.Command
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.Input(x => x.Email)
+    @Html.Input(x => x.FirstName)
+    @Html.Input(x => x.LastName)
+    @Html.Input(x => x.Title)
+    @Html.Input(x => x.Office)
+    @Html.Input(x => x.PhoneNumber)
+
+    <div>
+        @Html.SaveButton()
+        @Html.CancelButton(Url.Action("Index", "Home"))
+    </div>
+}

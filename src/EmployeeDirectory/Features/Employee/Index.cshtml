@@ -1,0 +1,71 @@
+﻿@model EmployeeDirectory.Features.Employee.EmployeeIndex.ViewModel[]
+@using EmployeeDirectory.Model
+@inject UserContext UserContext
+@{
+    ViewBag.Title = "Employees";
+}
+
+<table class="table table-sm table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Office</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        @if (UserContext.Has(Permission.EditEmployees))
+        {
+            <th>Edit</th>
+        }
+        @if (UserContext.Has(Permission.DeleteEmployees))
+        {
+            <th>Delete</th>
+        }
+        @if (UserContext.Has(Permission.ManageSecurity))
+        {
+            <th>Roles</th>
+        }
+    </tr>
+
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.LastName, @employee.FirstName</td>
+            <td>@employee.Title</td>
+            <td>@employee.Office</td>
+            <td>@employee.Email</td>
+            <td class="text-nowrap">@employee.PhoneNumber</td>
+            @if (UserContext.Has(Permission.EditEmployees))
+            {
+                <td class="text-center">
+                    @Html.EditButton(Url.Action("Edit", new { employee.Id }))
+                </td>
+            }
+            @if (UserContext.Has(Permission.DeleteEmployees))
+            {
+                <td class="text-center">
+                    @if (UserContext.User.Id != employee.Id)
+                    {
+                        @Html.DeleteButton(
+                            Url.Action("Delete", new { employee.Id, employee.FirstName, employee.LastName }),
+                            $"{employee.FirstName} {employee.LastName}")
+                    }
+                </td>
+            }
+            @if (UserContext.Has(Permission.ManageSecurity))
+            {
+                <td class="text-center">
+                    @if (UserContext.User.Id != employee.Id)
+                    {
+                        @Html.ConfigureButton(Url.Action("Assign", "Role", new { EmployeeId = employee.Id }))
+                    }
+                </td>
+            }
+        </tr>
+    }
+</table>
+<div>
+    @if (UserContext.Has(Permission.RegisterEmployees))
+    {
+        @Html.Button("Register New Employee", Url.Action("Register"))
+    }
+</div>

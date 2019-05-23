@@ -1,0 +1,23 @@
+﻿@model EmployeeDirectory.Features.Employee.EditEmployee.Command
+@{
+    ViewBag.Title = "Edit Employee";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.Input(x => x.Email)
+    @Html.Input(x => x.FirstName)
+    @Html.Input(x => x.LastName)
+    @Html.Input(x => x.Title)
+    @Html.Input(x => x.Office)
+    @Html.Input(x => x.PhoneNumber)
+
+    <div>
+        @Html.SaveButton()
+        @Html.CancelButton(Url.Action("Index"))
+    </div>
+}

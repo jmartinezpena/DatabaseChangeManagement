@@ -1,0 +1,20 @@
+﻿@model EmployeeDirectory.Features.Account.LogIn.Command
+
+@{
+    ViewBag.Title = "Employee Directory";
+}
+
+<div class="row">
+    <div class="offset-4 col-4 mt-5">
+        <h1 class="text-center">@ViewBag.Title</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.Input(x => x.Email)
+            @Html.Input(x => x.Password)
+
+            <div>
+                @Html.SubmitButton("Log In")
+            </div>
+        }
+    </div>
+</div>
