@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using EmployeeDirectory.Features.Employee;
     using EmployeeDirectory.Model;
-    using Should;
+    using Shouldly;
     using static Testing;
 
     public class EmployeeIndexTests
@@ -50,7 +50,7 @@
 
             var result = await Send(query);
 
-            result.Length.ShouldEqual(Count<Employee>());
+            result.Length.ShouldBe(Count<Employee>());
 
             result
                 .Where(x => expectedIds.Contains(x.Id))

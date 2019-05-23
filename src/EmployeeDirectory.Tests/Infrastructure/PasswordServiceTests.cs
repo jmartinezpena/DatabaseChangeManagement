@@ -1,7 +1,7 @@
 ﻿namespace EmployeeDirectory.Tests.Infrastructure
 {
     using EmployeeDirectory.Infrastructure;
-    using Should;
+    using Shouldly;
     using static Testing;
 
     public class PasswordServiceTests
@@ -13,7 +13,7 @@
 
             var hashedPassword = PasswordService.HashPassword(password);
 
-            hashedPassword.ShouldNotEqual(password);
+            hashedPassword.ShouldNotBe(password);
             PasswordService.Verify(password, hashedPassword).ShouldBeTrue();
             PasswordService.Verify(invalidPassword, hashedPassword).ShouldBeFalse();
         }

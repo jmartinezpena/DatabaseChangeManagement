@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using EmployeeDirectory.Model;
-    using Should;
+    using Shouldly;
     using static Testing;
 
     public class DirectoryContextTests
@@ -22,18 +22,17 @@
                     database.SaveChanges();
 
                     var intermediateCount = database.Employee.Count();
-                    intermediateCount.ShouldEqual(countBefore + 1);
+                    intermediateCount.ShouldBe(countBefore + 1);
 
                     throw new Exception("This is expected to cause a rollback.");
                 });
             };
 
-            failingTransaction.Throws<Exception>()
-                .Message.ShouldEqual("This is expected to cause a rollback.");
+            failingTransaction.ShouldThrow<Exception>().Message.ShouldBe("This is expected to cause a rollback.");
 
             var countAfter = Count<Employee>();
 
-            countAfter.ShouldEqual(countBefore);
+            countAfter.ShouldBe(countBefore);
 
             var loaded = Query<Employee>(employee.Id);
             loaded.ShouldBeNull();

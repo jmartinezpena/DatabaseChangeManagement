@@ -4,7 +4,7 @@
     using EmployeeDirectory.Features.Account;
     using EmployeeDirectory.Infrastructure;
     using Infrastructure;
-    using Should;
+    using Shouldly;
     using static Testing;
 
     public class LogInTests
@@ -67,7 +67,7 @@
             Scoped<ILoginService>(loginService =>
             {
                 ((StubLoginService)loginService)
-                    .AuthenticatedEmail.ShouldEqual(email);
+                    .AuthenticatedEmail.ShouldBe(email);
             });
         }
     }

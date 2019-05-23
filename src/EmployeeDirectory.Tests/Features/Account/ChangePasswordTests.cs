@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using EmployeeDirectory.Features.Account;
     using EmployeeDirectory.Infrastructure;
-    using Should;
+    using Shouldly;
     using static Testing;
     using Employee = EmployeeDirectory.Model.Employee;
 

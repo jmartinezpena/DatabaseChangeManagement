@@ -6,16 +6,12 @@
     using EmployeeDirectory.Model;
     using FluentValidation.Results;
     using MediatR;
-    using Should;
-    using Should.Core.Assertions;
+    using Shouldly;
     using static System.Environment;
     using static Testing;
 
     public static class Assertions
     {
-        public static TException Throws<TException>(this Action action) where TException : Exception
-            => Assert.Throws<TException>(new Assert.ThrowsDelegate(action.Invoke));
-
         public static void ShouldMatch<T>(this IEnumerable<T> actual, params T[] expected)
             => actual.ToArray().ShouldMatch(expected);
 
@@ -63,11 +59,11 @@
         public static void ShouldPersist<TEntity>(this TEntity entity)
             where TEntity : Entity
         {
-            entity.Id.ShouldEqual(Guid.Empty);
+            entity.Id.ShouldBe(Guid.Empty);
 
             Transaction(database => database.Set<TEntity>().Add(entity));
 
-            entity.Id.ShouldNotEqual(Guid.Empty);
+            entity.Id.ShouldNotBe(Guid.Empty);
 
             Transaction(database =>
             {

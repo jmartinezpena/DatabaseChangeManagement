@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using EmployeeDirectory.Model;
     using EmployeeDirectory.Features.Employee;
-    using Should;
+    using Shouldly;
     using static EmployeeDirectory.Infrastructure.PasswordService;
     using static Testing;
 

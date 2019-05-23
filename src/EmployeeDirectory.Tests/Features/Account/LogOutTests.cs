@@ -4,7 +4,7 @@
     using EmployeeDirectory.Features.Account;
     using EmployeeDirectory.Infrastructure;
     using Infrastructure;
-    using Should;
+    using Shouldly;
     using static Testing;
 
     public class LogOutTests
@@ -16,7 +16,7 @@
             Scoped<ILoginService>(loginService =>
             {
                 ((StubLoginService)loginService)
-                    .AuthenticatedEmail.ShouldEqual(employee.Email);
+                    .AuthenticatedEmail.ShouldBe(employee.Email);
             });
 
             await Send(new LogOut.Command());

@@ -5,7 +5,7 @@
     using EmployeeDirectory.Model;
     using EmployeeDirectory.Features.Employee;
     using EmployeeDirectory.Features.Role;
-    using Should;
+    using Shouldly;
     using RoleSelection = EmployeeDirectory.Features.Role.RoleAssignment.Command.RoleSelection;
     using static Testing;
 
@@ -25,7 +25,7 @@
             });
 
             var countAfter = Count<Employee>();
-            countAfter.ShouldEqual(countBefore - 1);
+            countAfter.ShouldBe(countBefore - 1);
 
             var deletedEmployee = Query<Employee>(employeeToDelete.Id);
             deletedEmployee.ShouldBeNull();
@@ -90,7 +90,7 @@
             remainingEmployeeRoleAssignments
                 .Roles
                 .Single(x => x.Selected)
-                .RoleId.ShouldEqual(role.Id);
+                .RoleId.ShouldBe(role.Id);
         }
     }
 }
