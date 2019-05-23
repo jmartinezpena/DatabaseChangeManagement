@@ -17,11 +17,11 @@ function publish($project) {
 main {
     validate-target "default" "rebuild" "ci"
 
-    $targetFramework = "net471"
+    $targetFramework = "netcoreapp2.2"
     $configuration = 'Release'
-    $product = "HeadStart Employee Directory"
-    $yearInitiated = 2015
-    $owner = "Headspring"
+    $product = "Database Change Management"
+    $yearInitiated = 2019
+    $owner = "Armando Martinez"
     $publish = "$(resolve-path .)/publish"
 
     $connectionStrings = @{
