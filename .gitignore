@@ -1,6 +1,7 @@
 /src/.vs/
 /src/**/bin/
 /src/**/obj/
+/src/*.sln.DotSettings
 /src/*.sln.DotSettings.user
 /src/**/*.csproj.user
 /src/EmployeeDirectory.DatabaseMigration/packages/
