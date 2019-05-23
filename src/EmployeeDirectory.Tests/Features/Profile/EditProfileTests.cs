@@ -21,6 +21,7 @@
             {
                 FirstName = loggedInEmployee.FirstName,
                 LastName = loggedInEmployee.LastName,
+                SportTeam = loggedInEmployee.SportTeam,
                 Title = loggedInEmployee.Title,
                 Office = loggedInEmployee.Office,
                 Email = loggedInEmployee.Email,
@@ -35,6 +36,7 @@
                     "'Email' must not be empty.",
                     "'First Name' must not be empty.",
                     "'Last Name' must not be empty.",
+                    "'Sport Team' must not be empty.",
                     "'Title' must not be empty.",
                     "'Office' must not be empty.");
         }
@@ -45,6 +47,7 @@
             {
                 FirstName = SampleFirstName(),
                 LastName = SampleLastName(),
+                SportTeam = SampleSportTeam(),
                 Title = SampleTitle(),
                 Office = Sample<Office>(),
                 PhoneNumber = SamplePhoneNumber()
@@ -89,6 +92,7 @@
                 Email = email,
                 FirstName = "Patrick",
                 LastName = "Jones",
+                SportTeam = "Pumas",
                 Title = "Principal Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-0002"
@@ -103,6 +107,7 @@
                 HashedPassword = originalHashedPassword,
                 FirstName = "Patrick",
                 LastName = "Jones",
+                SportTeam = "Pumas",
                 Title = "Principal Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-0002"
@@ -121,6 +126,7 @@
                 Email = email,
                 FirstName = self.FirstName,
                 LastName = self.LastName,
+                SportTeam = self.SportTeam,
                 Title = self.Title,
                 Office = self.Office,
                 PhoneNumber = self.PhoneNumber
@@ -135,6 +141,7 @@
                 Email = email,
                 FirstName = self.FirstName,
                 LastName = self.LastName,
+                SportTeam = self.SportTeam,
                 Title = self.Title,
                 Office = self.Office,
                 PhoneNumber = self.PhoneNumber
