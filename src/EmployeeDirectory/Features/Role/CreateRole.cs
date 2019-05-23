@@ -47,7 +47,7 @@
                 _database = database;
             }
 
-            protected override Response HandleCore(Command message)
+            protected override Response Handle(Command message)
             {
                 var role = new Role { Name = message.Name };
 

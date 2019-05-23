@@ -56,7 +56,7 @@
                 _database = database;
             }
 
-            protected override void HandleCore(Command message)
+            protected override void Handle(Command message)
             {
                 var employee = _database.Employee.Find(message.Id);
 

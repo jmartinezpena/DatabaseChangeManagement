@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using Model;
     using FluentValidation;
@@ -57,7 +58,7 @@
                 _loginService = loginService;
             }
 
-            protected override async Task HandleCore(Command message)
+            protected override async Task Handle(Command message, CancellationToken cancellationToken)
                 => await _loginService.LogIn(message.Email);
         }
     }

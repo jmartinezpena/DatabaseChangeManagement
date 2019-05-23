@@ -23,7 +23,7 @@
                 _directory = directory;
             }
 
-            protected override void HandleCore(Command message)
+            protected override void Handle(Command message)
             {
                 _directory.Database.ExecuteSqlCommand(
                     "DELETE FROM [RolePermission] WHERE [RoleId] = @RoleId",

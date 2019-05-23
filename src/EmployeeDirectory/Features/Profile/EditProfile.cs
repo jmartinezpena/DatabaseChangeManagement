@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
     using FluentValidation;
@@ -26,7 +27,7 @@
                 _mapper = mapper;
             }
 
-            protected override Command HandleCore(Query message)
+            protected override Command Handle(Query message)
                 => _mapper.Map<Command>(_userContext.User);
         }
 
@@ -92,7 +93,7 @@
                 _loginService = loginService;
             }
 
-            protected override async Task HandleCore(Command message)
+            protected override async Task Handle(Command message, CancellationToken cancellationToken)
             {
                 _mapper.Map(message, _userContext.User);
 

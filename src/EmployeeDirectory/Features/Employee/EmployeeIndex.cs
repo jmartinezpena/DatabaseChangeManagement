@@ -32,7 +32,7 @@
                 _mapper = mapper;
             }
 
-            protected override ViewModel[] HandleCore(Query request)
+            protected override ViewModel[] Handle(Query request)
             {
                 return _database.Employee
                     .OrderBy(x => x.LastName)

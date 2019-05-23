@@ -23,7 +23,7 @@
                 _directory = directory;
             }
 
-            protected override IReadOnlyList<Permission> HandleCore(Query message)
+            protected override IReadOnlyList<Permission> Handle(Query message)
             {
                 return _directory.PermissionView.FromSql(
                         @"SELECT [EmployeeRole].[EmployeeId], [RolePermission].[Permission]

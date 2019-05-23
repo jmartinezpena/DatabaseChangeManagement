@@ -84,7 +84,7 @@
                 _mapper = mapper;
             }
 
-            protected override Response HandleCore(Command message)
+            protected override Response Handle(Command message)
             {
                 var employee = _mapper.Map<Employee>(message);
 

@@ -51,7 +51,7 @@
                 _context = context;
             }
 
-            protected override void HandleCore(Command message)
+            protected override void Handle(Command message)
                 => _context.User.HashedPassword = PasswordService.HashPassword(message.NewPassword);
         }
     }

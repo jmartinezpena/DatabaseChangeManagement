@@ -1,5 +1,6 @@
 ﻿namespace EmployeeDirectory.Features.Account
 {
+    using System.Threading;
     using System.Threading.Tasks;
     using Infrastructure;
     using MediatR;
@@ -19,7 +20,7 @@
                 _loginService = loginService;
             }
 
-            protected override async Task HandleCore(Command message)
+            protected override async Task Handle(Command message, CancellationToken cancellationToken)
                 => await _loginService.LogOut();
         }
     }

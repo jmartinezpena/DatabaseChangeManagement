@@ -50,7 +50,7 @@
                 _directory = directory;
             }
 
-            protected override Command HandleCore(Query message)
+            protected override Command Handle(Query message)
             {
                 var selectedRoles = _directory.EmployeeRole
                     .Where(x => x.Employee.Id == message.EmployeeId)
@@ -84,7 +84,7 @@
                 _directory = directory;
             }
 
-            protected override void HandleCore(Command message)
+            protected override void Handle(Command message)
             {
                 _directory.Database.ExecuteSqlCommand(
                     "DELETE FROM [EmployeeRole] WHERE [EmployeeId] = @EmployeeId",
