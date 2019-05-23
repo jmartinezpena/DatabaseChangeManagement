@@ -69,10 +69,9 @@
             });
             services.AddMediatR(assembly);
             services.AddAutoMapper(assembly);
-            Mapper.Configuration.AssertConfigurationIsValid();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMapper mapper)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -84,6 +83,8 @@
             app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
+
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
     }
 }
