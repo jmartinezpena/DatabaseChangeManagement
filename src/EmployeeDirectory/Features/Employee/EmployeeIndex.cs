@@ -15,6 +15,7 @@
             public Guid Id { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public string SportTeam { get; set; }
             public string Title { get; set; }
             public Office Office { get; set; }
             public string Email { get; set; }

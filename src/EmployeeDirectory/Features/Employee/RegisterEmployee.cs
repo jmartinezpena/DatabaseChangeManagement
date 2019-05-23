@@ -28,6 +28,9 @@
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
+            [Display(Name = "Sport Team")]
+            public string SportTeam  { get; set; }
+
             public string Title { get; set; }
 
             public Office? Office { get; set; }
@@ -50,6 +53,7 @@
                 RuleFor(x => x.FirstName).NotEmpty().Length(1, 100);
                 RuleFor(x => x.LastName).NotEmpty().Length(1, 100);
                 RuleFor(x => x.Title).NotEmpty().Length(1, 100);
+                RuleFor(x => x.SportTeam).NotEmpty().Length(1, 100);
                 RuleFor(x => x.Office).NotEmpty();
                 RuleFor(x => x.PhoneNumber).Length(1, 50);
 
