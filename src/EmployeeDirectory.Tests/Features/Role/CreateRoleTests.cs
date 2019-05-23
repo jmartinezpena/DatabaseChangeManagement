@@ -10,7 +10,7 @@
         public void ShouldRequireMinimumFields()
         {
             new CreateRole.Command()
-                .ShouldNotValidate("'Name' should not be empty.");
+                .ShouldNotValidate("'Name' must not be empty.");
         }
 
         public async Task ShouldRequireUniqueName()

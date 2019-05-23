@@ -32,11 +32,11 @@
         {
             new EditProfile.Command()
                 .ShouldNotValidate(
-                    "'Email' should not be empty.",
-                    "'First Name' should not be empty.",
-                    "'Last Name' should not be empty.",
-                    "'Title' should not be empty.",
-                    "'Office' should not be empty.");
+                    "'Email' must not be empty.",
+                    "'First Name' must not be empty.",
+                    "'Last Name' must not be empty.",
+                    "'Title' must not be empty.",
+                    "'Office' must not be empty.");
         }
 
         public void ShouldRequireValidEmailAddress()
@@ -50,7 +50,7 @@
                 PhoneNumber = SamplePhoneNumber()
             };
 
-            command.ShouldNotValidate("'Email' should not be empty.");
+            command.ShouldNotValidate("'Email' must not be empty.");
 
             command.Email = SampleEmail();
             command.ShouldValidate();

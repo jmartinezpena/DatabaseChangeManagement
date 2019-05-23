@@ -13,9 +13,9 @@
         {
             new ChangePassword.Command()
                 .ShouldNotValidate(
-                    "'Current Password' should not be empty.",
-                    "'New Password' should not be empty.",
-                    "'Confirm Password' should not be empty.");
+                    "'Current Password' must not be empty.",
+                    "'New Password' must not be empty.",
+                    "'Confirm Password' must not be empty.");
         }
 
         public async Task ShouldRequireValidCurrentPasswordToAuthorizePasswordChange()
@@ -53,11 +53,11 @@
 
             command.NewPassword = null;
             command.ConfirmPassword = "abc123";
-            command.ShouldNotValidate("'New Password' should not be empty.");
+            command.ShouldNotValidate("'New Password' must not be empty.");
 
             command.NewPassword = "abc123";
             command.ConfirmPassword = null;
-            command.ShouldNotValidate("'Confirm Password' should not be empty.");
+            command.ShouldNotValidate("'Confirm Password' must not be empty.");
 
             command.NewPassword = "abc123";
             command.ConfirmPassword = "abc123";

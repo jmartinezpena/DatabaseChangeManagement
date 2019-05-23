@@ -13,13 +13,13 @@
         {
             new RegisterEmployee.Command()
                 .ShouldNotValidate(
-                    "'Email' should not be empty.",
-                    "'Initial Password' should not be empty.",
-                    "'Confirm Initial Password' should not be empty.",
-                    "'First Name' should not be empty.",
-                    "'Last Name' should not be empty.",
-                    "'Title' should not be empty.",
-                    "'Office' should not be empty.");
+                    "'Email' must not be empty.",
+                    "'Initial Password' must not be empty.",
+                    "'Confirm Initial Password' must not be empty.",
+                    "'First Name' must not be empty.",
+                    "'Last Name' must not be empty.",
+                    "'Title' must not be empty.",
+                    "'Office' must not be empty.");
         }
 
         public void ShouldRequirePasswordConfirmationMatchesInitialPassword()
@@ -36,11 +36,11 @@
 
             command.Password = null;
             command.ConfirmPassword = "abc123";
-            command.ShouldNotValidate("'Initial Password' should not be empty.");
+            command.ShouldNotValidate("'Initial Password' must not be empty.");
 
             command.Password = "abc123";
             command.ConfirmPassword = null;
-            command.ShouldNotValidate("'Confirm Initial Password' should not be empty.");
+            command.ShouldNotValidate("'Confirm Initial Password' must not be empty.");
 
             command.Password = "abc123";
             command.ConfirmPassword = "abc123";
@@ -65,7 +65,7 @@
                 PhoneNumber = "555-123-9999"
             };
 
-            command.ShouldNotValidate("'Email' should not be empty.");
+            command.ShouldNotValidate("'Email' must not be empty.");
 
             command.Email = SampleEmail();
             command.ShouldValidate();
