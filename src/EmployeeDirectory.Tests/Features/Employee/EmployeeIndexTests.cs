@@ -17,6 +17,7 @@
                 x.Email = patrickEmail;
                 x.FirstName = "Patrick";
                 x.LastName = "Zed";
+                x.SportTeam = "America";
                 x.Title = "Principal Consultant";
                 x.Office = Office.Austin;
                 x.PhoneNumber = "555-123-0001";
@@ -28,6 +29,7 @@
                 x.Email = alonsoEmail;
                 x.FirstName = "Alonso";
                 x.LastName = "Smith";
+                x.SportTeam = "Chivas";
                 x.Title = "Senior Consultant";
                 x.Office = Office.Austin;
                 x.PhoneNumber = "555-123-0002";
@@ -39,6 +41,7 @@
                 x.Email = sharonEmail;
                 x.FirstName = "Sharon";
                 x.LastName = "Smith";
+                x.SportTeam = "Pumas";
                 x.Title = "Principal Consultant";
                 x.Office = Office.Dallas;
                 x.PhoneNumber = "555-123-0003";
@@ -60,6 +63,7 @@
                         Id = alonso.Id,
                         FirstName = "Alonso",
                         LastName = "Smith",
+                        SportTeam = "Chivas",
                         Title = "Senior Consultant",
                         Office = Office.Austin,
                         Email = alonsoEmail,
@@ -70,6 +74,7 @@
                         Id = sharon.Id,
                         FirstName = "Sharon",
                         LastName = "Smith",
+                        SportTeam = "Pumas",
                         Title = "Principal Consultant",
                         Office = Office.Dallas,
                         Email = sharonEmail,
@@ -80,6 +85,7 @@
                         Id = patrick.Id,
                         FirstName = "Patrick",
                         LastName = "Zed",
+                        SportTeam = "America",
                         Title = "Principal Consultant",
                         Office = Office.Austin,
                         Email = patrickEmail,

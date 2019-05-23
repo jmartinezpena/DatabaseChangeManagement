@@ -18,6 +18,7 @@
                     "'Confirm Initial Password' must not be empty.",
                     "'First Name' must not be empty.",
                     "'Last Name' must not be empty.",
+                    "'Sport Team' must not be empty.",
                     "'Title' must not be empty.",
                     "'Office' must not be empty.");
         }
@@ -29,6 +30,7 @@
                 Email = SampleEmail(),
                 FirstName = SampleFirstName(),
                 LastName = SampleLastName(),
+                SportTeam = SampleSportTeam(),
                 Title = SampleTitle(),
                 Office = Sample<Office>(),
                 PhoneNumber = SamplePhoneNumber()
@@ -60,6 +62,7 @@
                 ConfirmPassword = password,
                 FirstName = "John",
                 LastName = "Smith",
+                SportTeam = "Monterrey",
                 Title = "Junior Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-9999"
@@ -86,6 +89,7 @@
                 ConfirmPassword = password,
                 FirstName = "John",
                 LastName = "Smith",
+                SportTeam = "Tigres",
                 Title = "Junior Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-9999"
@@ -111,6 +115,7 @@
                 ConfirmPassword = password,
                 FirstName = "John",
                 LastName = "Smith",
+                SportTeam = "Monterrey",
                 Title = "Junior Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-9999"
@@ -126,6 +131,7 @@
                 Email = email,
                 FirstName = "John",
                 LastName = "Smith",
+                SportTeam = "Monterrey",
                 Title = "Junior Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-9999"

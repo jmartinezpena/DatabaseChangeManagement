@@ -216,6 +216,7 @@
         public static string SamplePassword() => SampleString();
         public static string SampleFirstName() => SampleString();
         public static string SampleLastName() => SampleString();
+        public static string SampleSportTeam() => SampleString();
         public static string SampleTitle() => SampleString();
 
         public static Role SampleRole()
@@ -287,6 +288,7 @@
                 ConfirmPassword = password,
                 FirstName = SampleFirstName(),
                 LastName = SampleLastName(),
+                SportTeam = SampleSportTeam(),
                 Title = SampleTitle(),
                 Office = Sample<Office>(),
                 PhoneNumber = SamplePhoneNumber()

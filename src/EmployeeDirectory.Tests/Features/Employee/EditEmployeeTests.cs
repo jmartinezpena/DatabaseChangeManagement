@@ -19,6 +19,7 @@
                 x.Email = email;
                 x.FirstName = "John";
                 x.LastName = "Smith";
+                x.SportTeam = "Cruz Azul";
                 x.Title = "Senior Consultant";
                 x.Office = Office.Austin;
                 x.PhoneNumber = "555-123-0001";
@@ -34,6 +35,7 @@
                 Email = email,
                 FirstName = "John",
                 LastName = "Smith",
+                SportTeam = "Cruz Azul",
                 Title = "Senior Consultant",
                 Office = Office.Austin,
                 PhoneNumber = "555-123-0001"
@@ -47,6 +49,7 @@
                     "'Email' must not be empty.",
                     "'First Name' must not be empty.",
                     "'Last Name' must not be empty.",
+                    "'Sport Team' must not be empty.",
                     "'Title' must not be empty.",
                     "'Office' must not be empty.");
         }
@@ -58,6 +61,7 @@
                 Id = Guid.NewGuid(),
                 FirstName = "Patrick",
                 LastName = "Jones",
+                SportTeam = "Leon",
                 Title = "Principal Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-0002"
@@ -104,6 +108,7 @@
                 Email = email,
                 FirstName = "Patrick",
                 LastName = "Jones",
+                SportTeam = "Leon",
                 Title = "Principal Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-0002"
@@ -118,6 +123,7 @@
                 Email = email,
                 FirstName = "Patrick",
                 LastName = "Jones",
+                SportTeam = "Leon",
                 Title = "Principal Consultant",
                 Office = Office.Houston,
                 PhoneNumber = "555-123-0002"
@@ -137,6 +143,7 @@
                 Email = email,
                 FirstName = self.FirstName,
                 LastName = self.LastName,
+                SportTeam = self.SportTeam,
                 Title = self.Title,
                 Office = self.Office,
                 PhoneNumber = self.PhoneNumber
@@ -151,6 +158,7 @@
                 Email = email,
                 FirstName = self.FirstName,
                 LastName = self.LastName,
+                SportTeam = self.SportTeam,
                 Title = self.Title,
                 Office = self.Office,
                 PhoneNumber = self.PhoneNumber
