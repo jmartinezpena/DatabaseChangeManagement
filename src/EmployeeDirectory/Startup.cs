@@ -59,14 +59,16 @@
                 });
 
             var connectionString = Configuration["Database:ConnectionString"];
-
-            var assembly = Assembly.GetExecutingAssembly();
-
             services.AddDbContext<DirectoryContext>(options =>
             {
                 options.UseLazyLoadingProxies();
                 options.UseSqlServer(connectionString);
             });
+
+            services.AddHealthChecks();
+
+            var assembly = Assembly.GetExecutingAssembly();
+
             services.AddMediatR(assembly);
             services.AddAutoMapper(assembly);
         }
@@ -79,6 +81,8 @@
                 app.UseExceptionHandler("/Home/Error");
 
             app.UseStaticFiles();
+
+            app.UseHealthChecks("/health");
 
             app.UseAuthentication();
 
