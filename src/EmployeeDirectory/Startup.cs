@@ -76,6 +76,7 @@
             services.AddTransient<HealthChecks.IRedisHealthCheck>(s => new HealthChecks.RedisHealthCheck(redisConfiguration));
 
             services.AddHealthChecks()
+                .AddCheck("Self", () => HealthCheckResult.Healthy())
                 .AddCheck<HealthChecks.ISqlServerHealthCheck>("SqlServer")
                 .AddCheck<HealthChecks.IRedisHealthCheck>("Redis");
 
@@ -95,6 +96,8 @@
             app.UseStaticFiles();
 
             app.UseHealthChecks("/health", GetHealthCheckOptions());
+
+            app.UseHealthChecks("/liveness", GetHealthCheckLivenessOptions());
 
             app.UseAuthentication();
 
@@ -123,6 +126,17 @@
                     ctx.Response.ContentType = MediaTypeNames.Application.Json;
                     await ctx.Response.WriteAsync(result);
                 }
+            };
+
+            return options;
+        }
+
+        private static HealthCheckOptions GetHealthCheckLivenessOptions()
+        {
+            var options = new HealthCheckOptions
+            {
+                AllowCachingResponses = false,
+                Predicate = r => r.Name.Contains("Self")
             };
 
             return options;
