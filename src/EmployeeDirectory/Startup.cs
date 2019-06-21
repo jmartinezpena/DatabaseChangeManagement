@@ -66,8 +66,12 @@
             });
             services.AddTransient<HealthChecks.ISqlServerHealthCheck>(s => new HealthChecks.SqlServerHealthCheck(connectionString));
 
+            var redisConfiguration = Configuration["Redis:Configuration"];
+            services.AddTransient<HealthChecks.IRedisHealthCheck>(s => new HealthChecks.RedisHealthCheck(redisConfiguration));
+
             services.AddHealthChecks()
-                .AddCheck<HealthChecks.ISqlServerHealthCheck>("SqlServer");
+                .AddCheck<HealthChecks.ISqlServerHealthCheck>("SqlServer")
+                .AddCheck<HealthChecks.IRedisHealthCheck>("Redis");
 
             var assembly = Assembly.GetExecutingAssembly();
 
