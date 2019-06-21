@@ -1,9 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-
-namespace EmployeeDirectory
+﻿namespace EmployeeDirectory
 {
     using System.Reflection;
     using AutoMapper;
@@ -69,24 +64,10 @@ namespace EmployeeDirectory
                 options.UseLazyLoadingProxies();
                 options.UseSqlServer(connectionString);
             });
+            services.AddTransient<HealthChecks.ISqlServerHealthCheck>(s => new HealthChecks.SqlServerHealthCheck(connectionString));
 
             services.AddHealthChecks()
-                .AddAsyncCheck("SqlServer", async () =>
-                {
-                    using (var connection = new SqlConnection(connectionString))
-                    {
-                        try
-                        {
-                            await connection.OpenAsync();
-                        }
-                        catch (Exception)
-                        {
-                            return HealthCheckResult.Unhealthy();
-                        }
-
-                        return HealthCheckResult.Healthy();
-                    }
-                });
+                .AddCheck<HealthChecks.ISqlServerHealthCheck>("SqlServer");
 
             var assembly = Assembly.GetExecutingAssembly();
 
