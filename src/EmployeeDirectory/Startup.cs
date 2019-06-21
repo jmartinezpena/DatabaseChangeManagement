@@ -15,6 +15,12 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using System;
+    using System.Linq;
+    using System.Net.Mime;
+    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+    using Microsoft.Extensions.Diagnostics.HealthChecks;
+    using Newtonsoft.Json;
     using Model;
     using Serilog;
 
@@ -88,13 +94,38 @@
 
             app.UseStaticFiles();
 
-            app.UseHealthChecks("/health");
+            app.UseHealthChecks("/health", GetHealthCheckOptions());
 
             app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
 
             mapper.ConfigurationProvider.AssertConfigurationIsValid();
+        }
+
+        private static HealthCheckOptions GetHealthCheckOptions()
+        {
+            var options = new HealthCheckOptions
+            {
+                AllowCachingResponses = false,
+                ResponseWriter = async (ctx, rpt) =>
+                {
+                    var result = JsonConvert.SerializeObject(
+                        new
+                        {
+                            status = rpt.Status.ToString(),
+                            checks = rpt.Entries.Select(e => new
+                            {
+                                key = e.Key, value = Enum.GetName(typeof(HealthStatus), e.Value.Status)
+                            })
+                        }, Formatting.None,
+                        new JsonSerializerSettings() {NullValueHandling = NullValueHandling.Ignore});
+                    ctx.Response.ContentType = MediaTypeNames.Application.Json;
+                    await ctx.Response.WriteAsync(result);
+                }
+            };
+
+            return options;
         }
     }
 }
