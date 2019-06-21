@@ -1,4 +1,9 @@
-﻿namespace EmployeeDirectory
+﻿using System;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+namespace EmployeeDirectory
 {
     using System.Reflection;
     using AutoMapper;
@@ -65,7 +70,23 @@
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+                .AddAsyncCheck("SqlServer", async () =>
+                {
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            await connection.OpenAsync();
+                        }
+                        catch (Exception)
+                        {
+                            return HealthCheckResult.Unhealthy();
+                        }
+
+                        return HealthCheckResult.Healthy();
+                    }
+                });
 
             var assembly = Assembly.GetExecutingAssembly();
 
